@@ -1,0 +1,1 @@
+# synthia-external-api-aws-deployment
