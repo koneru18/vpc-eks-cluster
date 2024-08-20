@@ -1,4 +1,3 @@
-# synthia-external-api-aws-deployment
 
 # Commands to start resources
 - terraform plan
