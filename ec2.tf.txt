@@ -1,0 +1,23 @@
+resource "aws_instance" "public_instance" {
+  count           = length(var.availability_zones)
+  ami             = var.ami_id
+  instance_type   = var.instance_type
+  subnet_id       = element(aws_subnet.public_subnets.*.id, count.index)
+  security_groups = [aws_security_group.public_sg.name]
+  tags = {
+    Name      = "${var.aws_stack_name}-public-instance-${count.index + 1}",
+    StackName = var.aws_stack_name
+  }
+}
+
+resource "aws_instance" "private_instance" {
+  count           = length(var.availability_zones)
+  ami             = var.ami_id
+  instance_type   = var.instance_type
+  subnet_id       = element(aws_subnet.private_subnets.*.id, count.index)
+  security_groups = [aws_security_group.private_sg.name]
+  tags = {
+    Name      = "${var.aws_stack_name}-private-instance-${count.index + 1}",
+    StackName = var.aws_stack_name
+  }
+}

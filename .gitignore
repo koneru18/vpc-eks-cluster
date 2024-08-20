@@ -1,0 +1,10 @@
+# .terraform directories
+**/.terraform/*
+.terraform
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# Key file
+*.pem
